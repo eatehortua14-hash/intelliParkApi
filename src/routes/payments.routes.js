@@ -35,9 +35,9 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             required:
- *               - parking_id
+ *               - payment_parking_id
  *             properties:
- *               parking_id:
+ *               payment_parking_id:
  *                 type: integer
  *                 example: 1
  *               payment_method:
