@@ -26,7 +26,7 @@ const isValidDate = (dateValue) => {
 
 const validateRegisterUser = (req, res, next) => {
   const errors = [];
-  const { user_first_name, user_last_name, user_email, user_password, user_role } = req.body;
+ const { user_first_name, user_last_name, user_email, user_password, user_role } = req.body || {};
 
   if (!user_first_name || typeof user_first_name !== 'string') {
     errors.push('El nombre es requerido y debe ser texto');
