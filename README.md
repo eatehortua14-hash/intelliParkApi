@@ -437,3 +437,39 @@ El token se obtiene al hacer login exitoso y expira según el valor de `JWT_EXPI
 ## Autores
 
 Proyecto formativo desarrollado en el **SENA** — Programa **Análisis y Desarrollo de Software (ADSO)**.
+ 
+## Endpoints revisados para el portafolio GA7
+ 
+| Metodo | Endpoint | Seguridad |
+|---|---|---|
+| POST | /api/auth/user-register | Publico |
+| POST | /api/auth/user-login | Publico |
+| GET | /api/auth/user-me | JWT |
+| GET | /api/users | JWT: administrador |
+| POST | /api/vehicles | JWT: administrador u operador |
+| GET | /api/vehicles | JWT: administrador u operador |
+| POST | /api/parking/check-in | JWT: administrador u operador |
+| POST | /api/parking/check-out | JWT: administrador u operador |
+| POST | /api/payments | JWT: administrador u operador |
+| GET | /api/payments/parking/:parkingId | JWT: administrador u operador |
+| GET | /api/reports/income | JWT: administrador |
+ 
+### Campos y condiciones importantes
+ 
+- El registro utiliza user_first_name, user_last_name, user_email,
+  user_password y user_role.
+- El login utiliza user_email y user_password.
+- El ingreso y la salida utilizan vehicle_plate.
+- El pago utiliza payment_parking_id, no parking_id.
+- Solo se pueden pagar parqueos finalizados y sin pago previo.
+- El reporte admite from y to en formato AAAA-MM-DD.
+- Las solicitudes protegidas requieren Authorization: Bearer <token>.
+ 
+### Documentacion de pruebas
+ 
+- docs/README-parking-pruebas.md
+- docs/README-pagos-pruebas.md
+- docs/README-hallazgo-swagger-pagos.md
+ 
+Esta lista recoge las rutas revisadas y no sustituye el catalogo completo
+disponible en Swagger.
